@@ -83,8 +83,8 @@ Element providing solution to no problem in particular.
       },
 
       defaultZChanged: function () {
-        console.log(this.defaultZ);
         if (!this.raised) {
+          console.log(this.defaultZ);
           this.$.card.setZ(this.defaultZ);
         }
       },
