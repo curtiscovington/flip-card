@@ -22,14 +22,17 @@ Element that acts as a card. Can be flipped to the front or back, and can be rai
 <polymer-element name="flip-card" attributes="animated z">
   <template>
     <link rel="stylesheet" href="flip-card.css">
-    <paper-shadow id="card" animated?="{{animated}}" z="{{z}}">
+
+    <div id="shadow-bottom" fit="" animated?="[[animated]]" class="paper-shadow-bottom-z-{{z}}"></div>
+    <div id="shadow-top" fit="" animated?="[[animated]]" class="paper-shadow-top-z-{{z}}"></div>
+
       <div flex id="front" class="{{ {hidden: flipped} | tokenList}}">
         <content select=".front"></content>
       </div>
       <div flex id="back" class="{{ {hidden: !flipped} | tokenList}}">
         <content select=".back"></content>
       </div>
-    </paper-shadow>
+    
   </template>
   <script>
     Polymer({
@@ -92,7 +95,7 @@ Element that acts as a card. Can be flipped to the front or back, and can be rai
        * The `setZ` method will raise or lower the paper-shadow z attribute
        *
        * @method setZ
-       * @param {Number} newZ
+       * @param {number} newZ
        */
       setZ: function (newZ) {
         this.$.card.setZ(newZ);
