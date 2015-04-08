@@ -8,15 +8,17 @@
     <link rel="import" href="flip-card.html">
 
     <script type="text/javascript">
+      var raised = false;
       function flipCard() {
         document.querySelector('#card').flip();
+        document.querySelector('#card').toggleRaise();
       }
     </script>
 
   </head>
   <body unresolved>
     <p>A `flip-card` looks like this:</p>
-    <flip-card id="card" onclick="flipCard()">
+    <flip-card id="card" onclick="flipCard()" defaultZ="1" raisedZ="5">
       <div class="front">
         <p>This is the front!</p>
       </div>

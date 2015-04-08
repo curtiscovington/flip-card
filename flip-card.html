@@ -103,6 +103,18 @@ Element providing solution to no problem in particular.
       },
 
       /**
+       * The `toggleRaise` method will raise or lower the paper-shadow z attribute
+       *
+       * @method toggleRaise
+       */
+      toggleRaise: function () {
+
+        this.raised = !this.raised;
+        if (this.raised) this.$.card.setZ(this.raisedZ);
+        else this.$.card.setZ(this.defaultZ);
+      },
+
+      /**
        * The `raise` method will raise the paper-shadow z attribute to raisedZ.
        *
        * @method raise
