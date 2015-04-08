@@ -13,13 +13,15 @@
         var card = document.querySelector('#card');
         card.flip();
 
+        raised = !raised;
+        
         if (raised){
           card.setZ(5);
         } else {
           card.setZ(1);
         }
         
-        raised = !raised;
+        
       }
     </script>
 

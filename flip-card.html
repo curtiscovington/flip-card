@@ -62,13 +62,31 @@ Element that acts as a card. Can be flipped to the front or back, and can be rai
       flipped: false,
 
       /**
-       * The `flip` method will flip the card from one side to the other.
+       * The `flip` method will flip the card from one side to the other
        *
        * @method flip
        */
       flip: function () {
         this.flipped = !this.flipped;
       },
+
+      /**
+       * The `showFront` method will make the front side of the card show 
+       *
+       * @method showFront
+       */
+      showFront: function() {
+        this.flipped = false;
+      }
+
+      /**
+       * The `showBack` method will make the back side of the card show
+       *
+       * @method showBack
+       */
+      showBack: function() {
+        this.flipped = true;
+      }
 
       /**
        * The `setZ` method will raise or lower the paper-shadow z attribute
