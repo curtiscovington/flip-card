@@ -82,12 +82,13 @@ Element providing solution to no problem in particular.
         this.$.card.setZ(this.defaultZ);
       },
 
-      defaultZChanged: function (attrName, old, new) {
+      defaultZChanged: function () {
+        console.log(this.defaultZ);
         if (!this.raised) {
           this.$.card.setZ(this.defaultZ);
         }
       },
-      raisedZChanged: function (attrName, old, new) {
+      raisedZChanged: function () {
         if (this.raised) {
           this.$.card.setZ(this.raisedZ);
         }
