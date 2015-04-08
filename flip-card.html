@@ -19,10 +19,10 @@ Element that acts as a card. Can be flipped to the front or back, and can be rai
 @status alpha
 @homepage http://CurtisCovington.github.io/flip-card
 -->
-<polymer-element name="flip-card" attributes="defaultZ raisedZ animated">
+<polymer-element name="flip-card" attributes="animated z">
   <template>
     <link rel="stylesheet" href="flip-card.css">
-    <paper-shadow id="card" animated?="{{animated}}" layout vertical>
+    <paper-shadow id="card" animated?="{{animated}}" z="{{z}}" layout vertical>
       <div flex id="front" class="{{ {hidden: flipped} | tokenList}}">
         <content select=".front"></content>
       </div>
@@ -34,31 +34,14 @@ Element that acts as a card. Can be flipped to the front or back, and can be rai
   <script>
     Polymer({
       /**
-       * The `defaultZ` attribute sets an initial z for the card
+       * The `z` attribute sets an initial z for the card
+       * 0-5 only.
        *
-       * @attribute defaultZ
+       * @attribute z
        * @type integer
-       * @default 0
+       * @default 1
        */
-      defaultZ: 0,
-
-      /**
-       * The `raisedZ` attribute sets a z for the card to be raised to
-       *
-       * @attribute raisedZ
-       * @type integer
-       * @default 0
-       */
-      raisedZ: 0,
-
-      /**
-       * `raised` lets us know if the card is in it's raised state
-       *
-       * @property raised
-       * @type bool
-       * @default false
-       */
-      raised: false,
+      z: 1,
 
       /**
        * `animated` lets us know if the card should be animated
@@ -78,21 +61,6 @@ Element that acts as a card. Can be flipped to the front or back, and can be rai
        */
       flipped: false,
 
-      ready: function() {
-        this.$.card.setZ(this.defaultZ);
-      },
-
-      defaultZChanged: function () {
-        if (!this.raised) {
-          this.$.card.setZ(this.defaultZ);
-        }
-      },
-      raisedZChanged: function () {
-        if (this.raised) {
-          this.$.card.setZ(this.raisedZ);
-        }
-      },
-
       /**
        * The `flip` method will flip the card from one side to the other.
        *
@@ -103,40 +71,15 @@ Element that acts as a card. Can be flipped to the front or back, and can be rai
       },
 
       /**
-       * The `toggleRaise` method will raise or lower the paper-shadow z attribute
+       * The `setZ` method will raise or lower the paper-shadow z attribute
        *
-       * @method toggleRaise
+       * @method setZ
+       * @param {Number} newZ
        */
-      toggleRaise: function () {
-
-        this.raised = !this.raised;
-        if (this.raised) this.$.card.setZ(this.raisedZ);
-        else this.$.card.setZ(this.defaultZ);
-      },
-
-      /**
-       * The `raise` method will raise the paper-shadow z attribute to raisedZ.
-       *
-       * @method raise
-       */
-      raise: function () {
-        if (this.raised) return;
-
-        this.raised = true;
-        this.$.card.setZ(this.raisedZ);
-      },
-
-      /**
-       * The `lower` method will lower the paper-shadow z attribute to defaultZ.
-       *
-       * @method lower
-       */
-      lower: function () {
-        if (!this.raised) return;
-
-        this.raised = false;
-        this.$.card.setZ(this.defaultZ);
-      },
+      setZ: function (newZ) {
+        this.z = newZ;
+        this.$.card.setZ(newZ);
+      }
 
     });
   </script>

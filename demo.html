@@ -10,15 +10,23 @@
     <script type="text/javascript">
       var raised = false;
       function flipCard() {
-        document.querySelector('#card').flip();
-        document.querySelector('#card').toggleRaise();
+        var card = document.querySelector('#card').toggleRaise();
+        card.flip();
+
+        if (raised){
+          card.setZ(5);
+        } else {
+          card.setZ(1);
+        }
+        
+        raised = !raised;
       }
     </script>
 
   </head>
   <body unresolved>
     <p>A `flip-card` looks like this:</p>
-    <flip-card id="card" onclick="flipCard()" style="width: 200px; height: 200px; background-color: green;" defaultZ="1" raisedZ="5">
+    <flip-card id="card" onclick="flipCard()" style="width: 200px; height: 200px; background-color: green;" animated>
       <div class="front">
         <p>This is the front!</p>
       </div>
