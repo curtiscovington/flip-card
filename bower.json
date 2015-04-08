@@ -1,6 +1,7 @@
 {
   "name": "flip-card",
   "version": "0.5.0",
+  "description": "A reusable two-sided that will adapt to the content given to it. Can be flipped and raised as needed.",
   "authors": [
     "Curtis Covington <curtiscovington@gmail.com>"
   ],
@@ -12,6 +13,9 @@
     "web-components"
   ],
   "main": "flip-card.html",
+  "ignore": [
+    ".jshintrc"
+  ],
   "dependencies": {
     "polymer": "Polymer/polymer#^0.5.4",
     "paper-shadow": "Polymer/paper-shadow#^0.5"
