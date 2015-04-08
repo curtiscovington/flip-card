@@ -1,6 +1,6 @@
 {
   "name": "flip-card",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A reusable two-sided that will adapt to the content given to it. Can be flipped and raised as needed.",
   "authors": [
     "Curtis Covington <curtiscovington@gmail.com>"
