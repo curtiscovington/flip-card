@@ -22,7 +22,7 @@ Element that acts as a card. Can be flipped to the front or back, and can be rai
 <polymer-element name="flip-card" attributes="animated z">
   <template>
     <link rel="stylesheet" href="flip-card.css">
-    <paper-shadow id="card" animated?="{{animated}}" z="{{z}}" layout vertical>
+    <paper-shadow id="card" animated?="{{animated}}" z="{{z}}">
       <div flex id="front" class="{{ {hidden: flipped} | tokenList}}">
         <content select=".front"></content>
       </div>
