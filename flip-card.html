@@ -78,6 +78,10 @@ Element providing solution to no problem in particular.
        */
       flipped: false,
 
+      ready: function() {
+        this.$.card.setZ(this.defaultZ);
+      },
+
       defaultZChanged: function () {
         if (!this.raised) {
           this.$.card.setZ(this.defaultZ);
