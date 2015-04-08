@@ -5,5 +5,5 @@ See the [component page](http://CurtisCovington.github.io/flip-card) for more in
 ## Install 
 
 ```sh
-bower install ccovington-flip-card
+$bower install ccovington-flip-card
 ```
