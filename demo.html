@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>flip-card Demo</title>
+    <script src="../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="flip-card.html">
+
+    <script type="text/javascript">
+      function flipCard() {
+        document.querySelector('#card').flip();
+      }
+    </script>
+
+  </head>
+  <body unresolved>
+    <p>A `flip-card` looks like this:</p>
+    <flip-card id="card" onclick="flipCard()">
+      <div class="front">
+        <p>This is the front!</p>
+      </div>
+      <div class="back">
+        <p>This is the back!</p>
+      </div>
+    </flip-card>
+
+
+  </body>
+</html>

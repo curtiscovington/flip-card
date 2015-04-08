@@ -1,0 +1,127 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-shadow/paper-shadow.html">
+<!--
+Element providing solution to no problem in particular.
+
+##### Example
+
+    <flip-card>
+      <div class="front">
+        <p>Front!</p>
+      </div>
+      <div class="back">
+        <p>Back!</p>
+      </div>
+    </flip-card>
+
+@element flip-card
+@blurb Element providing solution to no problem in particular.
+@status alpha
+@homepage http://CurtiCovington.github.io/flip-card
+-->
+<polymer-element name="flip-card" attributes="defaultZ raisedZ animated">
+  <template>
+    <link rel="stylesheet" href="flip-card.css">
+    <paper-shadow id="card" animated?="{{animated}}">
+      <div id="front" class="{{ {hidden: flipped} | tokenList}}">
+        <content select=".front"></content>
+      </div>
+      <div id="back" class="{{ {hidden: !flipped} | tokenList}}">
+        <content select=".back"></content>
+      </div>
+    </paper-shadow>
+  </template>
+  <script>
+    Polymer({
+      /**
+       * The `defaultZ` attribute sets an initial z for the card
+       *
+       * @attribute defaultZ
+       * @type integer
+       * @default 0
+       */
+      defaultZ: 0,
+
+      /**
+       * The `raisedZ` attribute sets a z for the card to be raised to
+       *
+       * @attribute raisedZ
+       * @type integer
+       * @default 0
+       */
+      raisedZ: 0,
+
+      /**
+       * `raised` lets us know if the card is in it's raised state
+       *
+       * @property raised
+       * @type bool
+       * @default false
+       */
+      raised: false,
+
+      /**
+       * `animated` lets us know if the card should be animated
+       *
+       * @attribute animated
+       * @type bool
+       * @default false
+       */
+      animated: false,
+
+      /**
+       * `flipped` lets us know if the card is in it's flipped state
+       *
+       * @property flipped
+       * @type bool
+       * @default false
+       */
+      flipped: false,
+
+      defaultZChanged: function () {
+        if (!this.raised) {
+          this.$.card.setZ(this.defaultZ);
+        }
+      },
+      raisedZChanged: function () {
+        if (this.raised) {
+          this.$.card.setZ(this.raisedZ);
+        }
+      },
+
+      /**
+       * The `flip` method will flip the card from one side to the other.
+       *
+       * @method flip
+       */
+      flip: function () {
+        this.flipped = !this.flipped;
+      },
+
+      /**
+       * The `raise` method will raise the paper-shadow z attribute to raisedZ.
+       *
+       * @method raise
+       */
+      raise: function () {
+        if (this.raised) return;
+
+        this.raised = true;
+        this.$.card.setZ(this.raisedZ);
+      },
+
+      /**
+       * The `lower` method will lower the paper-shadow z attribute to defaultZ.
+       *
+       * @method lower
+       */
+      lower: function () {
+        if (!this.raised) return;
+
+        this.raised = false;
+        this.$.card.setZ(this.defaultZ);
+      },
+
+    });
+  </script>
+</polymer-element>
