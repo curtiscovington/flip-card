@@ -1,0 +1,39 @@
+{
+  "name": "flip-card",
+  "description": "A reusable two-sided card that will adapt to the content given to it. Can be flipped and raised as needed.",
+  "authors": [
+    "Curtis Covington <curtiscovington@gmail.com>"
+  ],
+  "keywords": [
+    "flip-card",
+    "flip",
+    "card",
+    "polymer",
+    "web-components"
+  ],
+  "main": "flip-card.html",
+  "ignore": [
+    ".jshintrc"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.4",
+    "paper-shadow": "Polymer/paper-shadow#^0.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/curtiscovington/flip-card.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/curtiscovington/flip-card",
+  "_release": "7fea4b9368",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "7fea4b936825151fa57af64ba9cf6ff3521f5c92"
+  },
+  "_source": "git://github.com/curtiscovington/flip-card.git",
+  "_target": "master",
+  "_originalSource": "curtiscovington/flip-card",
+  "_direct": true
+}

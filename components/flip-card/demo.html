@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>flip-card Demo</title>
+    <script src="../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="flip-card.html">
+
+    <script type="text/javascript">
+      var raised = false;
+      var raisedZ = 5;
+      var loweredZ = 1;
+
+      function flipCard() {
+        var card = document.querySelector('#card');
+        card.flip();
+      }
+
+      function showFront() {
+        var card = document.querySelector('#card');
+        card.showFront();
+      }
+      
+      function showBack() {
+        var card = document.querySelector('#card');
+        card.showBack();
+      }
+
+      function toggleRaise() {
+        var card = document.querySelector('#card');
+        raised = !raised;
+
+        if (raised){
+          card.setZ(raisedZ);
+        } else {
+          card.setZ(loweredZ);
+        }
+      }
+
+      function raise() {
+        var card = document.querySelector('#card');
+        raised = true;
+        card.setZ(raisedZ);
+      }
+
+      function lower() {
+        var card = document.querySelector('#card');
+        raised = false;
+        card.setZ(loweredZ);
+      }
+
+    </script>
+
+  </head>
+  <body unresolved>
+    <p>A `flip-card` looks like this:</p>
+    <button onclick="flipCard()">Flip Card</button>
+    <button onclick="showFront()">Show Front</button>
+    <button onclick="showBack()">Show Back</button>
+    <button onclick="toggleRaise()">Toggle Raise</button>
+    <button onclick="raise()">Raise Card</button>
+    <button onclick="lower()">Lower Card</button>
+    <flip-card id="card"  style="width: 200px; height: 200px; background-color: green;" animated>
+      <div class="front">
+        <p>This is the front!</p>
+      </div>
+      <div class="back">
+        <p>This is the back!</p>
+      </div>
+    </flip-card>
+
+
+  </body>
+</html>

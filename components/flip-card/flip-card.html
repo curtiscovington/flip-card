@@ -1,0 +1,113 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-shadow/paper-shadow.html">
+<!--
+Element that acts as a card. Can be flipped to the front or back, and can be raised or lowered
+
+##### Example
+
+    <flip-card>
+      <div class="front">
+        <p>Front!</p>
+      </div>
+      <div class="back">
+        <p>Back!</p>
+      </div>
+    </flip-card>
+
+@element flip-card
+@blurb ement that acts as a card. Can be flipped to the front or back, and can be raised or lowered
+@status alpha
+@homepage http://CurtisCovington.github.io/flip-card
+-->
+<polymer-element name="flip-card" attributes="animated z">
+  <template>
+    <link rel="stylesheet" href="flip-card.css">
+
+    <div id="shadow-bottom" animated?="[[animated]]" class="paper-shadow-bottom-z-1"></div>
+    <div id="shadow-top" animated?="[[animated]]" class="paper-shadow-top-z-1"></div>
+
+      <div flex id="front" class="{{ {hidden: flipped} | tokenList}}">
+        <content select=".front"></content>
+      </div>
+      <div flex id="back" class="{{ {hidden: !flipped} | tokenList}}">
+        <content select=".back"></content>
+      </div>
+    
+  </template>
+  <script>
+    Polymer({
+      /**
+       * The `z` attribute sets an initial z for the card
+       * 0-5 only.
+       *
+       * @attribute z
+       * @type integer
+       * @default 1
+       */
+      z: 1,
+
+      /**
+       * `animated` lets us know if the card should be animated
+       *
+       * @attribute animated
+       * @type bool
+       * @default false
+       */
+      animated: false,
+
+      /**
+       * `flipped` lets us know if the card is in it's flipped state
+       *
+       * @property flipped
+       * @type bool
+       * @default false
+       */
+      flipped: false,
+
+      /**
+       * The `flip` method will flip the card from one side to the other
+       *
+       * @method flip
+       */
+      flip: function () {
+        this.flipped = !this.flipped;
+      },
+
+      /**
+       * The `showFront` method will make the front side of the card show 
+       *
+       * @method showFront
+       */
+      showFront: function() {
+        this.flipped = false;
+      },
+
+      /**
+       * The `showBack` method will make the back side of the card show
+       *
+       * @method showBack
+       */
+      showBack: function() {
+        this.flipped = true;
+      },
+
+      /**
+       * The `setZ` method will raise or lower the paper-shadow z attribute
+       * taken from https://github.com/Polymer/paper-shadow
+       *
+       * @method setZ
+       * @param {number} newZ
+       */
+      setZ: function(newZ) {
+      if (this.z !== newZ) {
+        this.$['shadow-bottom'].classList.remove('paper-shadow-bottom-z-' + this.z);
+        this.$['shadow-bottom'].classList.add('paper-shadow-bottom-z-' + newZ);
+        this.$['shadow-top'].classList.remove('paper-shadow-top-z-' + this.z);
+        this.$['shadow-top'].classList.add('paper-shadow-top-z-' + newZ);
+        this.z = newZ;
+      }
+    }
+
+    });
+  </script>
+</polymer-element>
