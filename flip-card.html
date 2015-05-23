@@ -23,8 +23,8 @@ Element that acts as a card. Can be flipped to the front or back, and can be rai
   <template>
     <link rel="stylesheet" href="flip-card.css">
 
-    <div id="shadow-bottom" fit="" animated?="[[animated]]" class="paper-shadow-bottom-z-{{z}}"></div>
-    <div id="shadow-top" fit="" animated?="[[animated]]" class="paper-shadow-top-z-{{z}}"></div>
+    <div id="shadow-bottom" animated?="[[animated]]" class="paper-shadow-bottom-z-1"></div>
+    <div id="shadow-top" animated?="[[animated]]" class="paper-shadow-top-z-1"></div>
 
       <div flex id="front" class="{{ {hidden: flipped} | tokenList}}">
         <content select=".front"></content>
@@ -93,13 +93,20 @@ Element that acts as a card. Can be flipped to the front or back, and can be rai
 
       /**
        * The `setZ` method will raise or lower the paper-shadow z attribute
+       * taken from https://github.com/Polymer/paper-shadow
        *
        * @method setZ
        * @param {number} newZ
        */
-      setZ: function (newZ) {
-        this.$.card.setZ(newZ);
+      setZ: function(newZ) {
+      if (this.z !== newZ) {
+        this.$['shadow-bottom'].classList.remove('paper-shadow-bottom-z-' + this.z);
+        this.$['shadow-bottom'].classList.add('paper-shadow-bottom-z-' + newZ);
+        this.$['shadow-top'].classList.remove('paper-shadow-top-z-' + this.z);
+        this.$['shadow-top'].classList.add('paper-shadow-top-z-' + newZ);
+        this.z = newZ;
       }
+    }
 
     });
   </script>
